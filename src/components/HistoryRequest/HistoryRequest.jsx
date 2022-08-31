@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'flowbite-react';
+import { format } from 'date-fns';
+import frLocale from 'date-fns/locale/fr';
 
 import {
   buildExtractParamsFromFormats,
@@ -98,7 +100,7 @@ export default function HistoryRequest ({ requestInfo, onClose, setAutoFocus }) 
         <span className='font-bold'>{requestInfo.index + 1}</span>
       </Table.Cell>
       <Table.Cell>
-        {requestInfo.date}
+        {format((requestInfo.date), 'dd/MM/yyyy h:m a', { locale: frLocale }).toUpperCase()}
       </Table.Cell>
       <Table.Cell>
         {requestStringToDisplay}
